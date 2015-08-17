@@ -1,0 +1,88 @@
+Bases de datos
+
+Examenes
+  primer parcial: Jueves 10 septiembre
+  segundo parcial: Jueves 22 de octubre
+  Examen final: Lunes 30 de noviembre
+    Examen 302a de IBM
+
+
+Sistema de informacion
+
+  Etapas basicas de la informacion
+    - Recolectar
+    - Procesar
+    - Almacenar
+      * Almacenamiento no persistente (Ram)
+      * Almacenamiento persistente
+        ~ Se puede guardar en archivos
+        ~ Se puede guardar tambien en bases de datos (son archivos de acceso aleatorio)
+    - Elaborar y presentar
+
+  Componentes de un sistema de informacion
+    - Datos
+    - Usuarios
+    - Administradores
+    - Equipo físico
+
+  Una base de datos es un conjunto de informacion relacionada entre si
+    - Tiene que tener una coleccion coherente de datos
+    - No hay informacion aleatoria que se pueda consiedrar parte de la DB
+    - Cada DB tiene su proposito
+    - Esta destinada a un grupo de gente concreta
+    Arquitectura de tres niveles o esquemas
+      * Físico
+      * Lógico
+      * Externo
+
+  Objetivos de un DBMS (Data Base Managmet System)
+    - Consultas no predefinidas y compuestas
+    - Flexibilidad a los cambios e independencia
+      * Independencia física
+        Si se hacen cambios en la base de datos, que a los usuarios no les afecte
+        que para ellos sea exactamente lo mismo
+      * Independencia lógica
+        Que no se tenga que cambiar el diseño de la base de datos por cada busqueda
+        de solamente consulta que se haga.
+    - Redundancia e inconsitencia de datos
+      Diseño de la bases de datos con normalización
+    - Integridad de la información
+      Que siempre este actualizada la informacion y sea igual en todas partes
+      Si existen fallas energéticas el DBMS debe de poder hacer una bitácora de
+      los logs
+    - Seguridad
+      * Encriptación
+      * Roles y usuarios
+      * Privilegios
+    - Concurrencia
+      Se puede solucionar con bloqueos
+
+  Modelación de bases de datos
+    - Modelo Relacional
+    - Modelo Jerarquico
+      Uno a muchos (Es muy redundante)
+    - Modelo en red
+      Grafos con registros y conecciones, dos nodos pueden tener el mismo sucesor
+    - Modelo de grafos
+    Cualquiera de los modelos que sea nos debe de proporcionar tres tipos de herramientas
+      * Estructurasd e datos con la que se puede construir la DB (tablas, árboles, etc)
+      * Conjutos de restricciones para mantener la integridad de la
+      * Los modelos deben de tener una serie de operaciones que te dejen manipular
+        los datos
+
+Pasos para diseñar una base de datos
+  1.- Levantamiento de requerimientos
+  2.- Determinar entidades
+  3.- Determinar atributos
+  4.- Determinar relaciones
+  5.- Establecer cardinalidades
+
+
+
+
+
+
+
+
+investigar al rato
+  - Tablum
