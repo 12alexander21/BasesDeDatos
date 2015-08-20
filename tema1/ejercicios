@@ -1,0 +1,171 @@
+Ejercicio 1 -- Servicio militar
+    El Ministerio de Defensa desea diseñar una Base de Datos para llevar un cierto
+    control de los soldados que realizan el servicio militar. Los datos significativos
+    a tener en cuenta son:
+    • Un soldado se define por su código de soldado (único), su nombre y apellidos, y su graduación.
+    • Existen varios cuarteles, cada uno se define por su código de cuartel, nombre ubicación.
+    • Hay que tener en cuenta que existen diferentes Cuerpos del Ejército (Infantería,
+      Artillería, Armada, ....), y cada uno se define por un código de Cuerpo y denominación.
+    • Los soldados están agrupados en compañías, siendo significativa para cada una de
+      éstas, el número de compañía y la actividad principal que realiza.
+    • Se desea controlar los servicios que realizan los soldados (guardias, imaginarias,
+      cuarteleros, ...), y se definen por el código de servicio y descripción.
+    • Consideraciones de diseño:
+      • Un soldado pertenece a un único cuerpo y a una única compañía, durante todo el
+        servicio militar. A una compañía pueden pertenecer soldados de diferentes cuerpos,
+        no habiendo relación directa entre compañías y cuerpos.
+      • Los soldados de una misma compañía pueden estar destinados en diferentes
+        cuarteles, es decir, una compañía puede estar ubicada en varios cuarteles, y
+        en un cuartel puede haber varias compañías. Eso si, un soldado sólo está en un cuartel.
+      • Un soldado realiza varios servicios a lo largo de la mili. Un mismo servicio puede
+        ser realizado por más de un soldado (con independencia de la compañía), siendo
+        significativa la fecha de realización.
+
+    Resolución
+    (- Entidades * Atributos)
+      - Soldado
+        * Códogo
+        * Nombre
+        * Apellidos
+        * Graduación
+      - Cuartel
+        * Código
+        * Nombre
+        * Ubicación
+      - Cuerpo
+        * Código
+        * Denominación
+      - Compañia
+        * Número
+        * Efectividades
+      - Servicio
+        * Código
+        * Descripción
+    Foto 1.0 ---> Nomenclatura
+    Foto 1.1 ---> Diagrama entidad relación
+
+
+Ejercicio 2 -- GESTIÓN DE TRABAJOS DE FIN DE CARRERA.
+    Una Escuela de Informática quiere generar un sistema para tener controlado
+    en una base de datos todo lo referente a los Trabajos Fin de Carrera: alumnos
+    que los realizan, profesores que los dirigen, temas de los que tratan y
+    tribunales que los corrigen. Por tanto, es de interés:
+    • Que los alumnos se definan por su número de matrícula, DNI y nombre. Un alumno
+      realiza, evidentemente, sólo un T.F.C.
+    • Que los T.F.C. se definen por su tema, por un número de orden y por la fecha de
+      comienzo. Un T.F.C. determinado, no puede ser realizado por varios alumnos.
+    • Que un profesor se define por su DNI, nombre y domicilio; y puesto que los T.F.C.
+      son del área en el que trabaja, NO interesa conocer el T.F.C. que dirige sino a qué
+      alumno se lo dirige.
+    • Que un Tribunal está formado por varios profesores y los profesores pueden formar
+      parte de varios tribunales. Por otra parte, sí es de interés para el tribunal conocer qué
+      alumno es el que se presenta, con qué T.F.C. y en qué fecha lo ha defendido. El
+      tribunal se define por un número de tribunal, lugar de examen y por el número de
+      componentes.
+    • Al margen de esto, un alumno puede haber pertenecido a algún grupo de
+      investigación del que haya surgido la idea del T.F.C. Dichos grupos se identifican
+      por un número de grupo, su nombre y por su número de componentes. Un alumno
+      no puede pertenecer a más de un grupo y no es de interés saber si el grupo tiene algo
+      que ver o no con el T.F.C. del alumno; sí siendo de interés la fecha de incorporación
+      a dicho grupo.
+    • Por otra parte, un profesor, al margen de dirigir el T.F.C. de algunos alumnos, puede
+      haber colaborado con otros en la realización de dicho T.F.C. pero siendo otro
+      profesor el que lo dirige. En este caso, sólo es interesante conocer qué profesor ha
+      ayudado a qué alumno (a un alumno le pueden ayudar varios profesores).
+
+    Resolución
+      - Alumno
+        * Matricula
+        * DNI
+        * Nombre
+      - TFC
+        * Tema
+        * Numero de orden
+        * Fecha de comienzo
+      - Profesor
+        * DNI
+        * Nombre
+        * Domicilio
+      - Tribunal
+        * Numero
+        * Lugar
+        * Número de componentes
+      - GI
+        * Número de grupo
+        * Nombre
+        * Número de componentes
+
+
+
+EJERCICIO3 - AGENCIAS DE VIAJES
+Una cadena de agencias de viajes desea disponer de una Base de Datos que contemple
+información relativa al hospedaje y vuelos de los turistas que la contratan.
+Los datos a tener en cuenta son:
+  • La cadena de agencias está compuesta por un conjunto de sucursales. Cada sucursal
+    viene definida por el código de sucursal, dirección y teléfono.
+  • La cadena tiene contratados una serie de hoteles de forma exclusiva. Cada hotel
+    estará definido por el código de hotel, nombre, dirección, ciudad, teléfono y número
+    de plazas disponibles.
+  • De igual forma, la cadena tiene contratados una serie de vuelos regulares de forma
+    exclusiva. Cada vuelo viene definido por el número de vuelo, fecha y hora, origen y
+    destino, plazas totales y plazas de clase turista de las que dispone.
+  • La información que se desea almacenar por cada turista es el código de turista,
+    nombre y apellidos, dirección y teléfono.
+Por otra parte, hay que tener en cuenta la siguiente información:
+  • A la cadena de agencias le interesa conocer que sucursal ha contratado el turista.
+  • A la hora de viajar el turista puede elegir cualquiera de los vuelos que ofrece la
+    cadena, y en que clase (turista o primera) desea viajar.
+  • De igual manera, el turista se puede hospedar en cualquiera de los hoteles que
+    ofrece la cadena, y elegir el régimen de hospedaje (media pensión o pensión
+    completa). Siendo significativa la fecha de llegada y de partida.
+
+Resolución
+  - Sucursales
+    * Codigo de sucursal
+    * Dirección
+    * Telefono
+  - Hotel
+    * Código de hotel
+    * Nombre
+    * Dirección
+    * Ciudad
+    * Telefono
+    * Número de plazas disponibles
+  - Vuelos
+    * nNmero de vuelo
+    * Fecha y hora
+    * Origen y destino
+    * Plazas totales
+    * Plazas de clase turista disponible
+  - Turista
+    * Código de turista
+    * Nombre y apellidos
+    * Dirección
+    * Telefono
+
+
+
+EJERCICIO 4- GESTIÓN DE EXÁMENES
+
+Los profesores de la asignatura de Bases de Datos del ITESM deciden crear una base de
+datos que contenga la información de los resultados de las pruebas realizadas a los
+alumnos. Para realizar el diseño se sabe que:
+  • Los alumnos están definidos por su n° de matrícula, nombre y el grupo al que asisten a clase.
+  • Dichos alumnos realizan dos tipos de pruebas a lo largo del curso académico:
+    o Exámenes escritos: cada alumno realiza varios exámenes a lo largo del
+      curso, y se definen por el n° de examen, el n° de preguntas de que consta y la
+      fecha de realización (la misma para todos los alumnos que realizan el mismo
+      examen). Evidentemente, es importante almacenar la nota de cada alumno
+      por examen.
+    o Prácticas: se realiza un n° indeterminado de ellas durante el curso académico,
+      algunas serán en grupo y otras individuales. Se definen por un
+      código de práctica, título y el grado de dificultad. En este caso los alumnos
+      pueden examinarse de cualquier práctica cuando lo deseen, debiéndose
+      almacenar la fecha y nota obtenida.
+  • En cuanto a los profesores, únicamente interesa conocer (además de sus datos
+    personales: No. Nómina y nombre), quien es el qué ha diseñado cada práctica,
+    sabiendo que en el diseño de una práctica puede colaborar más de un profesor, y que
+    un profesor puede diseñar más de una práctica. Interesa, además, la fecha en que ha
+    sido diseñada cada práctica por el profesor correspondiente.
+
+  Resolucion ---> ejercicio1.4.jpg

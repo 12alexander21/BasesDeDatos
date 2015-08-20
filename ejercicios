@@ -1,45 +1,441 @@
 Ejercicio 1 -- Servicio militar
-El Ministerio de Defensa desea diseñar una Base de Datos para llevar un cierto
-control de los soldados que realizan el servicio militar. Los datos significativos
-a tener en cuenta son:
-• Un soldado se define por su código de soldado (único), su nombre y apellidos, y su graduación.
-• Existen varios cuarteles, cada uno se define por su código de cuartel, nombre ubicación.
-• Hay que tener en cuenta que existen diferentes Cuerpos del Ejército (Infantería,
-  Artillería, Armada, ....), y cada uno se define por un código de Cuerpo y denominación.
-• Los soldados están agrupados en compañías, siendo significativa para cada una de
-  éstas, el número de compañía y la actividad principal que realiza.
-• Se desea controlar los servicios que realizan los soldados (guardias, imaginarias,
-  cuarteleros, ...), y se definen por el código de servicio y descripción.
-• Consideraciones de diseño:
-  • Un soldado pertenece a un único cuerpo y a una única compañía, durante todo el
-    servicio militar. A una compañía pueden pertenecer soldados de diferentes cuerpos,
-    no habiendo relación directa entre compañías y cuerpos.
-  • Los soldados de una misma compañía pueden estar destinados en diferentes
-    cuarteles, es decir, una compañía puede estar ubicada en varios cuarteles, y
-    en un cuartel puede haber varias compañías. Eso si, un soldado sólo está en un cuartel.
-  • Un soldado realiza varios servicios a lo largo de la mili. Un mismo servicio puede
-    ser realizado por más de un soldado (con independencia de la compañía), siendo
-    significativa la fecha de realización.
+    El Ministerio de Defensa desea diseñar una Base de Datos para llevar un cierto
+    control de los soldados que realizan el servicio militar. Los datos significativos
+    a tener en cuenta son:
+    • Un soldado se define por su código de soldado (único), su nombre y apellidos, y su graduación.
+    • Existen varios cuarteles, cada uno se define por su código de cuartel, nombre ubicación.
+    • Hay que tener en cuenta que existen diferentes Cuerpos del Ejército (Infantería,
+      Artillería, Armada, ....), y cada uno se define por un código de Cuerpo y denominación.
+    • Los soldados están agrupados en compañías, siendo significativa para cada una de
+      éstas, el número de compañía y la actividad principal que realiza.
+    • Se desea controlar los servicios que realizan los soldados (guardias, imaginarias,
+      cuarteleros, ...), y se definen por el código de servicio y descripción.
+    • Consideraciones de diseño:
+      • Un soldado pertenece a un único cuerpo y a una única compañía, durante todo el
+        servicio militar. A una compañía pueden pertenecer soldados de diferentes cuerpos,
+        no habiendo relación directa entre compañías y cuerpos.
+      • Los soldados de una misma compañía pueden estar destinados en diferentes
+        cuarteles, es decir, una compañía puede estar ubicada en varios cuarteles, y
+        en un cuartel puede haber varias compañías. Eso si, un soldado sólo está en un cuartel.
+      • Un soldado realiza varios servicios a lo largo de la mili. Un mismo servicio puede
+        ser realizado por más de un soldado (con independencia de la compañía), siendo
+        significativa la fecha de realización.
+
+    Resolución
+    (- Entidades * Atributos)
+      - Soldado
+        * Códogo
+        * Nombre
+        * Apellidos
+        * Graduación
+      - Cuartel
+        * Código
+        * Nombre
+        * Ubicación
+      - Cuerpo
+        * Código
+        * Denominación
+      - Compañia
+        * Número
+        * Efectividades
+      - Servicio
+        * Código
+        * Descripción
+    Foto 1.0 ---> Nomenclatura
+    Foto 1.1 ---> Diagrama entidad relación
+
+
+Ejercicio 2 -- GESTIÓN DE TRABAJOS DE FIN DE CARRERA.
+    Una Escuela de Informática quiere generar un sistema para tener controlado
+    en una base de datos todo lo referente a los Trabajos Fin de Carrera: alumnos
+    que los realizan, profesores que los dirigen, temas de los que tratan y
+    tribunales que los corrigen. Por tanto, es de interés:
+    • Que los alumnos se definan por su número de matrícula, DNI y nombre. Un alumno
+      realiza, evidentemente, sólo un T.F.C.
+    • Que los T.F.C. se definen por su tema, por un número de orden y por la fecha de
+      comienzo. Un T.F.C. determinado, no puede ser realizado por varios alumnos.
+    • Que un profesor se define por su DNI, nombre y domicilio; y puesto que los T.F.C.
+      son del área en el que trabaja, NO interesa conocer el T.F.C. que dirige sino a qué
+      alumno se lo dirige.
+    • Que un Tribunal está formado por varios profesores y los profesores pueden formar
+      parte de varios tribunales. Por otra parte, sí es de interés para el tribunal conocer qué
+      alumno es el que se presenta, con qué T.F.C. y en qué fecha lo ha defendido. El
+      tribunal se define por un número de tribunal, lugar de examen y por el número de
+      componentes.
+    • Al margen de esto, un alumno puede haber pertenecido a algún grupo de
+      investigación del que haya surgido la idea del T.F.C. Dichos grupos se identifican
+      por un número de grupo, su nombre y por su número de componentes. Un alumno
+      no puede pertenecer a más de un grupo y no es de interés saber si el grupo tiene algo
+      que ver o no con el T.F.C. del alumno; sí siendo de interés la fecha de incorporación
+      a dicho grupo.
+    • Por otra parte, un profesor, al margen de dirigir el T.F.C. de algunos alumnos, puede
+      haber colaborado con otros en la realización de dicho T.F.C. pero siendo otro
+      profesor el que lo dirige. En este caso, sólo es interesante conocer qué profesor ha
+      ayudado a qué alumno (a un alumno le pueden ayudar varios profesores).
+
+    Resolución
+      - Alumno
+        * Matricula
+        * DNI
+        * Nombre
+      - TFC
+        * Tema
+        * Numero de orden
+        * Fecha de comienzo
+      - Profesor
+        * DNI
+        * Nombre
+        * Domicilio
+      - Tribunal
+        * Numero
+        * Lugar
+        * Número de componentes
+      - GI
+        * Número de grupo
+        * Nombre
+        * Número de componentes
+
+
+
+EJERCICIO3 - AGENCIAS DE VIAJES
+Una cadena de agencias de viajes desea disponer de una Base de Datos que contemple
+información relativa al hospedaje y vuelos de los turistas que la contratan.
+Los datos a tener en cuenta son:
+  • La cadena de agencias está compuesta por un conjunto de sucursales. Cada sucursal
+    viene definida por el código de sucursal, dirección y teléfono.
+  • La cadena tiene contratados una serie de hoteles de forma exclusiva. Cada hotel
+    estará definido por el código de hotel, nombre, dirección, ciudad, teléfono y número
+    de plazas disponibles.
+  • De igual forma, la cadena tiene contratados una serie de vuelos regulares de forma
+    exclusiva. Cada vuelo viene definido por el número de vuelo, fecha y hora, origen y
+    destino, plazas totales y plazas de clase turista de las que dispone.
+  • La información que se desea almacenar por cada turista es el código de turista,
+    nombre y apellidos, dirección y teléfono.
+Por otra parte, hay que tener en cuenta la siguiente información:
+  • A la cadena de agencias le interesa conocer que sucursal ha contratado el turista.
+  • A la hora de viajar el turista puede elegir cualquiera de los vuelos que ofrece la
+    cadena, y en que clase (turista o primera) desea viajar.
+  • De igual manera, el turista se puede hospedar en cualquiera de los hoteles que
+    ofrece la cadena, y elegir el régimen de hospedaje (media pensión o pensión
+    completa). Siendo significativa la fecha de llegada y de partida.
 
 Resolución
-(- Entidades * Atributos)
-  - Soldado
-    * Códogo
+  - Sucursales
+    * Codigo de sucursal
+    * Dirección
+    * Telefono
+  - Hotel
+    * Código de hotel
     * Nombre
-    * Apellidos
-    * Graduación
-  - Cuartel
-    * Código
-    * Nombre
-    * Ubicación
-  - Cuerpo
-    * Código
-    * Denominación
-  - Compañia
-    * Número
-    * Efectividades
-  - Servicio
-    * Código
-    * Descripción
-Foto 1.0 ---> Nomenclatura
-Foto 1.1 ---> Diagrama entidad relación
+    * Dirección
+    * Ciudad
+    * Telefono
+    * Número de plazas disponibles
+  - Vuelos
+    * nNmero de vuelo
+    * Fecha y hora
+    * Origen y destino
+    * Plazas totales
+    * Plazas de clase turista disponible
+  - Turista
+    * Código de turista
+    * Nombre y apellidos
+    * Dirección
+    * Telefono
+
+
+
+EJERCICIO 4- GESTIÓN DE EXÁMENES
+
+Los profesores de la asignatura de Bases de Datos del ITESM deciden crear una base de
+datos que contenga la información de los resultados de las pruebas realizadas a los
+alumnos. Para realizar el diseño se sabe que:
+  • Los alumnos están definidos por su n° de matrícula, nombre y el grupo al que asisten a clase.
+  • Dichos alumnos realizan dos tipos de pruebas a lo largo del curso académico:
+    o Exámenes escritos: cada alumno realiza varios exámenes a lo largo del
+      curso, y se definen por el n° de examen, el n° de preguntas de que consta y la
+      fecha de realización (la misma para todos los alumnos que realizan el mismo
+      examen). Evidentemente, es importante almacenar la nota de cada alumno
+      por examen.
+    o Prácticas: se realiza un n° indeterminado de ellas durante el curso académico,
+      algunas serán en grupo y otras individuales. Se definen por un
+      código de práctica, título y el grado de dificultad. En este caso los alumnos
+      pueden examinarse de cualquier práctica cuando lo deseen, debiéndose
+      almacenar la fecha y nota obtenida.
+  • En cuanto a los profesores, únicamente interesa conocer (además de sus datos
+    personales: No. Nómina y nombre), quien es el qué ha diseñado cada práctica,
+    sabiendo que en el diseño de una práctica puede colaborar más de un profesor, y que
+    un profesor puede diseñar más de una práctica. Interesa, además, la fecha en que ha
+    sido diseñada cada práctica por el profesor correspondiente.
+
+  Resolucion ---> ejercicio1.4.jpg
+
+
+
+EJERCICIO 5.- CONCESIONARIO DE AUTOMÓVILES
+  Un concesionario de automóviles desea informatizar su gestión de ventas de vehículos. En
+  particular, se quiere tener almacenada la información referente a los clientes que compran
+  en el concesionario, los vehículos vendidos, así como los vendedores que realizan las
+  distintas ventas. Para ello se tendrá en cuenta que:
+    • El concesionario dispone de un catálogo de vehículos definidos por su marca,
+      modelo, cilindrada y precio.
+    • Cada uno de los modelos dispondrá de unas opciones adicionales (aire
+      acondicionado, pintura metalizada, etc.). Las opciones vienen definidas por un
+      nombre y una descripción. Hay que tener en cuenta que una opción puede ser común
+      para varios modelos variando sólo el precio en cada caso.
+    • En cuanto a los clientes, la información de interés es el nombre, IFE, dirección y
+      teléfono, lo mismo que para los vendedores.
+    • Los clientes pueden ceder su coche usado en el momento de comprar un vehículo
+      nuevo. El coche usado vendrá definido por su marca, modelo, matrícula y precio de
+      tasación. Es importante conocer la fecha en la que el cliente realiza esta cesión.
+    • Se desea saber qué vendedor ha vendido qué modelo a qué cliente. También la fecha
+      de la venta y la matricula del nuevo vehículo. Es importante así mismo saber las
+      opciones que el cliente ha elegido para el modelo que compra.
+
+
+
+EJERCICIO 6.- HOLDING EMPRESARIAL
+  Un holding de empresas desea tener una base de datos referente a las empresas que posee,
+  sus vendedores, así como los asesores que trabajan en el holding. La información está
+  organizada de la siguiente forma:
+    • Los vendedores se organizan en una jerarquía de pirámide, es decir, cada vendedor
+      puede captar otros vendedores para el holding, de manera que un vendedor tendrá a
+      su cargo varios vendedores. Hay que tener en cuenta que un vendedor sólo podrá
+      trabajar en una empresa y sólo podrá captar vendedores para la empresa en que
+      trabaja; siendo importante almacenar la fecha en que se realiza la captación. Los
+      datos de interés para los vendedores serán el código de vendedor, nombre y la dirección.
+    • Las empresas cubrirán diferentes áreas del mercado y una misma área puede ser
+      cubierta por varias empresas. Es interesante conocer el nombre del área y una
+      descripción de ésta. Las empresas pueden estar actuando en varios países y en un
+      país pueden estar desarrollando actividades varias empresas. Sin embargo, cada
+      empresa tendrá su sede en un único país, siendo importante la ciudad donde se
+      localiza la sede. Por cuestiones fiscales, una empresa puede tener su sede en un país
+      en el que no esté desarrollando actividad alguna. Los datos de interés para las
+      empresas son el nombre, la fecha de entrada en el holding, la facturación anual y el
+      número de vendedores que posee.
+    • Los datos de interés de los países son: el nombre, el PIB, el número de habitantes y
+      la capital.
+    • Los asesores entran en el holding para dar soporte en cada una de las áreas en las
+      que actúa el holding. Un asesor puede cubrir varias áreas y un área puede ser
+      cubierta por varios asesores. Un asesor puede asesorar a varias empresas y una
+      empresa tener varios asesores. Es importante saber en qué fecha un asesor comienza
+      a trabajar para una empresa en un área determinada. Los datos de interés de los
+      asesores son el código de asesor, nombre, dirección y la titulación.
+
+EJERCICIO 7.- CLUB NÁUTICO
+  Un club náutico desea tener informatizados los datos correspondientes a sus instalaciones,
+  empleados, socios y embarcaciones que se encuentran en dicho club. El club está
+  organizado de la siguiente forma:
+    • Los socios pertenecientes al club vienen definidos por su nombre, dirección, IFE,
+      teléfono y fecha de ingreso en el club.
+    • Las embarcaciones vienen definidas por: matricula, nombre, tipo y dimensiones.
+    • Los amarres tienen como datos de interés el número de amarre, la lectura del
+      contador de agua y luz, y si tienen o no servicios de mantenimiento contratados.
+
+• Por otro lado, hay que tener en cuenta que una embarcación pertenece a un socio
+
+aunque un socio puede tener varias embarcaciones. Una embarcación ocupará un
+
+amarre y un amarre está ocupado por una sola embarcación. Es importante la fecha
+
+en la que una embarcación en asignada a un amarre.
+
+• Los socios pueden ser propietarios de amarres, siendo importante la fecha de
+
+compra del amarre. Hay que tener en cuenta que un amarre pertenece a un solo socio
+
+y que NO HAY ninguna relación directa entre la fecha en la que se compra un
+
+amarre y en la que una embarcación se asigna a un amarre.
+
+• El club náutico está dividido en varias zonas definidas por una letra, el tipo de
+
+barcos que tiene, el número de barcos que contiene, la profundidad y el ancho de los
+
+amarres. Una zona tendrá varios amarres y un amarre pertenece a una sola zona.
+
+• En cuanto a los empleados, estos vienen definidos por su código, nombre, dirección,
+
+teléfono y especialidad. Un empleado está asignado a varias zonas y en una zona
+
+puede haber más de un empleado, siendo de interés el número de barcos de los que
+
+se encarga en cada zona. Hay que tener en cuenta que un empleado puede no
+
+encargarse de todos los barcos de una zona.
+
+EJERCICIO 8.- COMPAÑÍA DE SEGUROS
+
+Una compañía de seguros desea que se haga un diseño de una base de datos para gestionar
+
+toda la información referente a los seguros que ofrece, los clientes a los que atiende y los
+
+agentes de seguros que trabajan para la compañía. Esta compañía ofrece tres tipos de
+
+seguros:
+
+• Seguros de Hogar: los seguros de este tipo ofrecidos por la compañía están ofertados
+
+de forma fija (es decir se han hecho estudios previos), según el valor del continente
+
+(la casa), el contenido (muebles, electrodomésticos, joyas, etc.), riesgos auxiliares
+
+(responsabilidad civil, asalto y otros). Para cada oferta hay una prima asignada.
+
+• Seguros de Vida: de la misma forma que los de hogar, existen varias ofertas fijas
+
+según la edad y profesión del cliente, y la cobertura económica del seguro. De la
+
+misma forma que en los seguros de Hogar, existe una prima fija para cada oferta.
+
+• Seguros de Automóvil: también existen ofertas fijas, según la categoría de coche
+
+(utilitario, gama media, gama alta, gran turismo, lujo, etc.), años del vehículo, edad
+
+del conductor y cobertura (amplia, daños a terceros, etc.). A cada una de estas
+
+ofertas le corresponde una prima.
+
+Para llevar un control de las comisiones que se llevan los agentes y de sus carteras
+
+correspondientes, la compañía necesita tener almacenados los datos de los agentes,
+
+considerándose de interés el nombre, IFE, dirección y teléfono. Para el pago de comisiones
+
+y carteras (se entiende por “cartera” la comisión anual del agente mientras el seguro esté
+
+vigente), será necesario saber qué agente ha realizado qué seguro y en qué fecha.
+
+La compañía considera como datos de interés referentes al cliente (sea cual sea el seguro
+
+que contrate), los siguientes: Nombre, dirección, teléfono e IFE.
+
+Otras consideraciones sobre la contratación de seguros por parte del cliente son:
+
+• Seguros Hogar: fecha del contrato del seguro y dirección del inmueble asegurado.
+
+• Seguros Automóvil: fecha contratación, matrícula del vehículo, recargos y
+
+descuentos.
+
+• Otras consideraciones: Un cliente puede contratar más de un seguro de Vida, más de
+
+un seguro de Hogar y más de un seguro de Automóvil. Además estos contratos
+
+pueden realizarse a través de distintos agentes. Los beneficiarios de seguros de vida
+
+pueden serlo de varios seguros, e incluso de varios clientes distintos. Por supuesto
+
+un cliente puede nombrar a varios beneficiarios de un mismo seguro de vida.
+
+EJERCICIO 9.- OFICINA DE PATENTES
+
+Una oficina de patentes desea disponer de una Base de Datos que contenga toda la
+
+información relativa a la presentación de patentes, inventores que las presentan y las
+
+empresas que desean comprarlas.
+
+Esta información tendrá que estar organizada teniendo en cuenta los siguientes puntos:
+
+• Los datos de interés referentes a cada patente serán el número de patente y el
+
+nombre del
+
+• invento. La patente sólo puede pertenecer a un único inventor, no pudiendo
+
+realizarse varias patentes referentes al mismo invento.
+
+• Los inventores vendrán definidos por su nombre, IFE, dirección y teléfono. Estos
+
+inventores podrán obtener varias patentes, siempre que éstas sean de diferentes
+
+inventos. Es importante saber la fecha en la cual se ha obtenido la patente.
+
+• Hay que tener en cuenta los casos en los que un inventor asesore a otros en el
+
+desarrollo de un invento.
+
+• Cada inventor tendrá uno o varios ayudantes que vendrán definidos por su nombre,
+
+dirección, teléfono e IFE. Además, estos ayudantes sólo podrán serlo de un inventor.
+
+• Cada patente podrá ser comprada por una sola empresa y una empresa podrá
+
+comprar diferentes patentes, siendo de interés la fecha de compra de la patente. Las
+
+empresas vienen definidas por un código de empresa, nombre, dirección y sus
+
+teléfonos.
+
+• Las empresas, al realizar la compra de una patente, pueden tener interés en contratar
+
+a su inventor. Es importante saber en qué fecha un inventor es contratado por una
+
+empresa con una patente determinada.
+
+• Un ayudante puede ser contratado por una empresa con independencia de que la
+
+empresa haya contratado o no al inventor del que es ayudante, siendo importante
+
+conocer la fecha de contratación.
+
+EJERCICIO 10.- ZOO
+
+Un zoológico necesita una aplicación informática para llevar su organización respecto a
+
+las especies que posee, los empleados (cuidadores y guías), y los distintos itinerarios de
+
+visita que ofrece. La información está estructurada de la siguiente manera:
+
+• Especies: de las especies interesa saber el nombre en español, el nombre científico y
+
+una descripción general. Hay que tener en cuenta que una especie puede vivir en
+
+diferentes hábitats naturales y que un hábitat puede ser ocupado por diferentes
+
+especies. Las especies se encuentran en distintas zonas del parque de manera que
+
+cada especie está en una zona y en una zona hay varias especies.
+
+• Hábitats: los diferentes hábitats naturales vienen definidos por el nombre, el clima y
+
+el tipo de vegetación predominantes, así como el continente o continentes en los que
+
+se encuentran.
+
+• Zonas: las zonas del parque en las que se encuentran las distintas especies vienen
+
+definidas por el nombre y la extensión que ocupan.
+
+• Itinerarios: los itinerarios discurren por distintas zonas del parque. La información
+
+de interés para los itinerarios es: código de itinerario, la duración del recorrido, la
+
+longitud del itinerario, el máximo número de visitantes autorizado y el número de
+
+distintas especies que visita. Hay que tener en cuenta que un itinerario recorre
+
+distintas zonas del parque y que una zona puede ser recorrida por diferentes
+
+itinerarios.
+
+• Guías: los guías del parque vienen definidos por el nombre, dirección, teléfono y
+
+fecha en la que comenzaron a trabajar en el zoo. Interesa saber qué guías llevan qué
+
+itinerarios, teniendo en cuenta que un guía puede llevar varios itinerarios y que un
+
+itinerario puede ser asignado a diferentes guías en diferentes horas, siendo éstas un
+
+dato de interés.
+
+• Cuidadores: los cuidadores vienen definidos por el nombre, dirección, teléfono y
+
+fecha de ingreso en el parque. Hay que tener en cuenta que un cuidador puede estar
+
+a cargo de varias especies y que una especie puede ser atendida por varios
+
+cuidadores, siendo de interés la fecha en la que un cuidador se hace cargo de una
+
+especie.
