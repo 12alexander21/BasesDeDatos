@@ -1,0 +1,72 @@
+a) Determinar el nivel de normalización de cada una de las tres relaciones
+
+  R1 = <T1, L1>                     |
+  T1= (A, B, C, D)                  |  FNBC
+  L1= {A→B, B→C, C→B, B→D, D→A}    |
+  claves: A, B, C, D                |
+
+  R2 = <T2, L2>                     |
+  T2= (A, E, F, G)                  |   1FN
+  L2= {AF→G}                        |
+  clave: AEF                        |
+  Normalizada:
+    R12:<T12, L12>
+    T12= (A, F, G)
+    L12= {AF→G}
+    clave: AF
+
+    R12:<T22, L22>
+    T22= (A, F, E)
+    L22= {0}
+    clave: AEF
+
+
+  R3 = <T3, L3>                     |
+  T3= (E, F, H, I, A)               |   1FN
+  L3= {EF→H, H→I, E→A}             |
+  clave: EF                         |
+  Normalizada:
+    R31 = <T31, L31>
+    T31= (E, A)
+    L31= {E→A}
+    clave: E
+
+    R32 = <T32, L32>
+    T32= (E, F, H, I)
+    L32= {EF→H, H→I}
+    clave: EF
+      R321 = <T321, L321>
+      T321= (H, I)
+      L321= {H→I}
+      clave: H
+
+      R322 = <T322, L322>
+      T322= (E, F, H)
+      L322= {EF→H}
+      clave: EF
+
+
+Ejercicio 2
+Se pretende realizar una revisión del diseño de la base de datos del ejercicio
+anterior, partiendo de una única relación R = <T, L> que englobe a las atributos
+de las tres anteriores, esto es T = T1 U T2 U T3
+Para ello, se analizan los requisitos del modelo nuevamente, y además de las
+dependencias funcionales ya deducidas (contenidas en L1 U L2 U L3) se obtienen
+las siguientes:  {A→E, C→BD, AB→C, BD→A, AD→A, AE→C}
+a) Realizar una descomposición de la relación para obtener un diseño en FNBC si se tienen como
+claves de la relación: AF, BF, CF, DF, EF
+
+R = <T, L>
+T = (A, B, C, D, E, F, G, H, I)
+L = {A→B, B→C, C→B, B→D, D→A, AF→G, EF→H, H→I, E→A, A→E, C→BD, AB→C, BD→A,
+    AD→A, AE→C}
+Clave = AF, BF, CF, DF, EF
+
+
+Solucion:
+R = <T, L>
+T = (A, B, C, D, E, F, G, H, I)
+L = {A→B, B→C, C→B, B→D, AF→G, EF→H, H→I, E→A, A→E}
+Clave = AF, BF, CF, DF, EF
+  P = {A, B ,C ,D ,E, F}
+  NP = {H, I, G}

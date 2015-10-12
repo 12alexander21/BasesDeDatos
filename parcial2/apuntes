@@ -1,0 +1,29 @@
+SQL
+  - DDL (Lenguaje de deficionion de datos)
+    Hace tres operaciones principales: Create, Alter, Drop
+      * BD
+      * Tablas
+      * Columnas
+      * Indices
+      * PK, FR
+      * Vistas
+        ~ Vistas simples
+        ~ Vistas materializadas
+        ~ Vistas recursivas
+      * SP
+      * Triggers
+      * Secuencias
+      * Table Space
+      * Buffer pools
+    Funciones
+      * Create database
+      * Create tablespace
+      * Create bufferpool
+      * Create view
+      * Create procedire
+      * Create function
+      * Create sequence
+      * Create index
+      * Create table
+  - DML
+  - DCL

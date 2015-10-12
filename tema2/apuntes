@@ -1,0 +1,17 @@
+Modelo Relacional
+
+Las entidades deben necesariamente de tener una clave primaria que debe de ser
+  única, los demás atributos son claves candidatas.
+  - Se recomienda hacerla de números enteros para que ocupen menos espacio
+  - No se recomienda hacerlo compusta ( nombre + apellido + edad + direccion)
+    porque gasta más espacio
+  - Las llaves primarias deben de ir subrayadas
+
+Cuando tenemos relaciones
+  - Uno a uno: Se pone la clave de "A" en los atributos de "B" y viceversa
+  - Uno a muchos: Si "A" tiene muchos "B" pero "B" solo tiene un "A" entonces
+      * Cuando tenemos entidades asociativas, el taributo de este va en los atributos
+        de quien tiene muchos
+    se pone en los atributos de cada "B" la clave de "A"
+  - Muchos a muchos: Se tiene que crear un anueva tabla en la que tenga las 2
+    claves

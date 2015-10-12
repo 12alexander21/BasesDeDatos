@@ -1,0 +1,171 @@
+SQL Power Architect Enterprise Edition Release Notes
+
+1.0.5 Release
+  Bug Fixes:
+    * Performance of the server has been improved
+    * Zooming no longer requires the ability to modify the project.
+    * Fixed some errors with DDL generation.
+    
+1.0.4 Release, September 20, 2010
+  UI Enhancements:
+    * Labels can now be coloured like tables.
+
+  Bug Fixes:
+    * Fixed validation badges on play pen relationships with one bend.
+    * Fixed generated sequence names from becoming very large.
+    * User Preferences no longer generates an exception.
+
+1.0.3 Release, August 27, 2010
+  Bug Fixes:
+    * Server can now run in a headless environment.
+    * Several client and server memory leaks have been fixed.
+    * Creating a new database connection on a server project while multiple
+      clients have the project open will correctly send the connection to all
+      the clients.
+    * Reverse engineering individual parent tables no longer causes the child
+      tables and their relationships to be reverse engineered.
+    * Dragging labels in the play pen no longer throws exceptions.
+
+1.0.2 Release, August 24, 2010
+  Bug Fixes:
+    * Dragging relationships no longer throws exceptions.
+
+1.0.1 Release, August 24, 2010
+  Bug Fixes:
+    * Data types and domain categories can be deleted correctly.
+    * Reverse engineering individual tables no longer retrieves all the tables
+      from the schema, which improves performance.
+    * Renaming connections no longer cause exceptions.
+    * Dragging tables no longer cause multiple revisions to be written.
+  Server:
+    * Added option to use H2 as the database backend.
+      * To switch from Apache Derby to H2 without losing your repository,
+        export all of your projects to save files, then delete your repository
+        folder. Then modify the webapp/WEB-INF/repository.xml file so that
+        underneath the Versioning tag, the PersistenceManager tag for Apache
+        Derby is commented out, and the PersistenceManager tag for H2 is
+        uncommented. Then re-import the saved projects back into the server
+        repository.
+  Projects:
+    * Added project import functionality.
+
+1.0.0 Release, August 17, 2010
+  Bug Fixes:
+    * Domains and data types can now be removed.
+    * Domains and data types are attached to a project as a snapshot to
+      keep old projects in a more consistent state.
+    * Many more...
+
+1.0.0 Preview Release 7, August 10, 2010
+  Revisions:
+    * Snapshots of user defined data types and domains are saved, and can be
+      properly loaded on any revision.
+  HTML reports:
+    * Added notes to profiling information.
+    * Added ETL mappings to profiling information.
+  UI:
+    * Added an additional tab to the table editor to display ETL mappings
+      between source and target columns.
+    * Added a server progress bar that is displayed each time a change to a
+      server workspace has been committed.
+    * Merged the business definitions, formulas & metrics, and ETL description
+      dialogs into one dialog, each on a separate tab.
+    * Added ability to create labels in the playpen.
+    * Source columns can now be selected in the column editor dialog.
+  Bug Fixes:
+    * Improved compatibility with Mac OS X; application can be assigned to
+      a Space, and .architect files can be dragged & dropped.
+    * Projects with duplicate names can no longer be created.
+    * Fixed a security bug where a group that is granted access on multiple
+      projects would throw an exception. 
+
+1.0.0 Preview Release 6, July 26, 2010
+  Project validation:
+    * Added more validators to the system.
+    * Object with errors or warnings are marked in the play pen and the 
+      object tree.
+    * Some errors and warnings can be fixed by a one button quick fix.
+  HTML reports:
+    * Profiling information can be exported to HTML with the built-in
+      template.
+  Management Meta-Data:
+    * Business definitions and formulas and metrics can now be stored with
+      a project's meta data.
+  UI
+    * Multiple projects can now be opened in the same window.
+  Bug Fixes:
+    * The upgrade path from Release 5 has been corrected.
+    * The performance of projects connected to the server has been improved. 
+
+1.0.0 Preview Release 5, July 9, 2010
+  Project validation:
+    * Added a new feature that can validate a user's project.
+    * There are several existing validations that can be disabled in 
+      their manager.
+    * Projects opened with the enterprise client can be validated while
+      making changes to the data model and tables, relationships, and 
+      columns with invalid data will be marked in the play pen.
+    * The project validation has replaced the older quick fix display
+      on forward engineering to provide a better error system.
+  Enumerations and constraints:
+    * Domains and types can now include enumerations and check constraints.
+    * Check constraints and enumerations can be forward engineered to:
+        Oracle, SQL Server, PostgreSQL, HSQLDB, and H2.
+  Bug Fixes:
+    * The server has had a performance increase of 30%
+    * The security windows have been improved to be more responsive.
+    * Fixed issues with granting privileges to new and existing users.
+
+1.0.0 Preview Release 4, June 4, 2010
+  Bug Fixes:
+    * Critical issues with reverting.
+    * Deleting profiles on a server project caused exceptions.
+    * Several UI bugs.
+    * Spring layout bug where persist calls do not follow one another.
+    * Copy Table Data and Forward Engineering on a server project used
+      the local pl.ini instead of the server pl.ini.
+    * Some performance issues with the domains manager and data type
+      manager.
+
+1.0.0 Preview Release 3, May 28, 2010
+  Bug Fixes:
+    * An upgrade path now exists for upgrading from previous releases of
+      the server.
+    * Fixed disconnected UI components on clients after changes on a 
+      different client.
+    * Revision panel has been cleaned up.
+    * Fixed bugs with reverting.
+    * Data types can now be changed on reverse engineered tables.
+    * Opening old revisions does not throw exceptions.
+    * Precision and scale are enforced on user defined sql types.
+    * Fixed copying tables from a local client to a server.
+
+1.0.0 Preview Release 2, May 21, 2010
+  Bug Fixes:
+    * Deleting a table with relationships attached threw an exception on
+      clients updating from the server.
+    * Zooming would cause a lot of transactions making it difficult
+      to revert.
+    * Reverting to an older version involving zooming or table deletions
+      did not work properly.
+    * Domains were not appearing in the column editor correctly.
+    * UI bug in the domain editor.
+    * Bugs involving populating databases with collaboration.
+    * Bugs involving relationships.
+    * Compare DM feature sometimes reports the need to add in existing
+      indices when forward engineering
+    * Reverse engineering tables threw an exception on clients updating
+      from the server.
+
+1.0.0 Preview Release, May 11, 2010
+  New Features:
+    * Added server components for full collaboration. Multiple users can
+      edit the same project at the same time.
+    * Added security. Users can be restricted access to projects, domains
+      and types, and modifying/creating users.
+    * Added editors for the domains and types. Users can specify new types
+      that do not exist normally in the open source client.
+    * Added version control. Users can view changes between older versions
+      of a project stored in the server. Users can also roll back to an
+      older version of a project.
+

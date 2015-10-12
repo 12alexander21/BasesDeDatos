@@ -1,0 +1,38 @@
+Normalización
+Es el tercer paso en el diseño de cualquier base de datos
+
+1FN --> No pueden tener atributos multivaluados, es decir, no puede tener un atributo
+        que tenga más de un dato
+        Se debe de separar la información
+2FN --> Todos los atributos no principales deben de depender completamente de la
+        llave (Los no principales son lo que no son parte de la llave, y los
+        principales son los de las llaves)
+3FN --> No pueden existir dependencias trancitivas, es decir, no puede existir un
+        atributo no principal que dependa de otro atributo no principal que depende
+        de la llave
+        Para solucionarlo se debe de sacar de la relación pasada y crear una nueva
+        es decir si tenemos, ID, A, B, donde ID es la llave de quien depende A,
+        B depende de A, entonces debemos hacer dos relaciones:
+        - x(ID, A) ID es la llave
+        - y(A, B) A es la llave
+FNBC--> 3FN + Todos los implicantes deben de ser clave
+
+Ejercicio del soldado
+  ServicioMilitar(codigo-soldado, nombre-soldado, graduacion, apellido, codigo-cuartel,
+                  nombre-cuartel, ubicacion, codigo-cuerpo, denominacion, numero-compañia,
+                  actividad, codigo-servicio,descripcion)
+
+  L = { codigo-soldado -> nombre, apellido, graduacion
+        codigo-cuartel -> nombre, ubicacion
+        codigo-cuerpo -> denominación
+        numero-compañia -> actividad
+        codigo-servicio -> descripcion
+      }
+  Clave: codigo-soldado + codigo-cuartel + codigo cuerpo + numero compañia + cod-servicio
+
+  Soldado(cod-soldado, nombre, apellidos)
+  ServicioSoldado(cod-soldado, cod-servicio)
+  servicio(cod-servicio, descripcion)
+  Cuartel(cod-cuartel, nombre, ubicacion)
+  Cuerpo(cod-cuerpo, denominacion)
+  Compañia(cod-compañia, actividad)

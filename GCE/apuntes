@@ -1,0 +1,14 @@
+Google Compute Engine
+    o arte de la consola
+
+Compute Engine --> Es una computadora, es otra computadora
+    - APIs
+    - Máquinas virtuales (RAM y procesadores)
+    - Almacenamiento
+    - Networkinh
+La instancia
+    - Machine type (CPUs, RAM)
+    - Image (OP)
+    - Disk (Hard drive)
+    - Network (Ports and firewalls)
+    - Location (Global, Reginal, Zone)
