@@ -85,8 +85,55 @@ SELECT code, SUM(cantidad)
 FROM reparto
 GROUP BY code
 
---
 
-SELECT
-FROM
+
+-- Conectarse por consola a bluemix y hacer dbs
+psql -h jumbo.db.elephantsql.com -d ayqfyukp -U ayqfyukp -W
+
+
+-- Union natural
+SELECT empleados.nombre AS "Empleado",
+       cervezas.envase AS "Cerveza",
+       bares.nombre AS "Bar",
+       reparto.fecha
+       reparto.cantidad
+FROM reparto, empeados, bares, cervezas
+WHERE reparto.code = empleados.code AND
+      reparto.codc = cervezas.codc AND
+      reparto.codb = bares.codb
+
+
+
+-- Join
+SELECT code AS "Empleado",
+       codc AS "Cerveza",
+       codb AS "Bar",
+       fecha
+       cantidad
+FROM reparto
 WHERE
+      code IN (SELECT code FROM empleados) AND
+      codc IN (SELECT codc FROM cervezas) AND
+      codb IN (SELECT codb FROM bares)
+
+-- Unir dos tablas y hacer una funcion agregada que sume todos los habitantes
+--    de todas esas localidades
+-- Solucion por union natural
+SELECT p.comunidad, sum(l.habitantes)
+FROM provincias p, localidades l
+WHERE p.codprov = l.codprov
+GROUP BY p.counidad
+
+
+
+-- Subconsultas
+SELECT * FROM localidades
+WHERE codloca IN (SELECT codloc FROM localidades WHERE nombre = 'Cuenca')
+-- LO mismo pero con join
+SELECT *
+FROM tramos JOIN localidades ON tramos.codloca = localidades.codloc
+WHERE localidades.nombre = 'Cuenca'
+-- Localidad que se repite muchas veces
+SELECT codloca
+FROM tramos JOIN localidades ON tramos.codloca = localidades.codloc
+WHERE localidades.nombre = 'Madrid'
